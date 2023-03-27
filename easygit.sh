@@ -5,7 +5,7 @@ BRANCH_P=$2
 MESSAGE_P=$3
 
 function confirm {
-    echo -en "\e[34mwould you like to continue (y/n): "
+    echo -en "\e[33mwould you like to continue (y/n): "
     read reply
     echo -e "\e[0m"
 
