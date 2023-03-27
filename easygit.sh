@@ -9,7 +9,7 @@ function confirm {
     read reply
     echo -e "\e[0m"
 
-    if [ "${reply,,}" -eq "y" ]; then
+    if [ "${reply,,}" == "y" ]; then
         return 1
     else 
         return 0
@@ -51,12 +51,10 @@ function run {
         startup
         checkout $mode $branch_p
 
-        finalmessage=$( [ $? ] && echo "$message_p" || echo "$branch_p" )
-        echo $finalmessage
+        finalmessage=$( [ $? -eq 1 ] && echo "$message_p" || echo "$branch_p" )
 
         confirm
-        echo $?
-        if [ $? ]; then
+        if [ $? -eq 1 ]; then
             alltopush $finalmessage
         fi
     fi
