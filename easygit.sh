@@ -37,7 +37,13 @@ function checkout {
 function alltopush {
     local message=$1
     git add .
+    echo ""
+    echo -e "\e[32mAdded .\e[0m"
+    echo ""
     git commit -m $message
+    echo ""
+    echo -e "\e[32mCommited with message \e[35m$message\e[32m\e[0m"
+    echo ""
     git push
 }
 
