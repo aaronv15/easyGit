@@ -62,4 +62,5 @@ function run {
 }
 
 run $MODE $BRANCH_P $MESSAGE_P
+echo -e "\e[32mDone :)\e[0m"
 exit 0
