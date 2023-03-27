@@ -52,7 +52,7 @@ function run {
         checkout $mode $branch_p
 
         finalmessage=$( [ $? ] && echo "$message_p" || echo "$branch_p" )
-        echo $message
+        echo $finalmessage
 
         confirm
         echo $?
