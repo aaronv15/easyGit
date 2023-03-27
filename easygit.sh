@@ -9,10 +9,10 @@ function confirm {
     read reply
     echo -e "\e[0m"
 
-    if [ "${reply,,}" != "y" ]; then
-        return 0
-    else 
+    if [ "${reply,,}" -eq "y" ]; then
         return 1
+    else 
+        return 0
     fi
 }
 
