@@ -55,6 +55,7 @@ function run {
         echo $message
 
         confirm
+        echo $?
         if [ $? ]; then
             alltopush $finalmessage
         fi
