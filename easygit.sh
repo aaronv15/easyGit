@@ -24,7 +24,7 @@ function startup {
 }
 
 function checkout {
-    local mode="$1"
+    local mode=$1
     local branch_p=$2
     if [[ "${MODE,,}" =~ "c" ]]; then
         git checkout $branch_p
@@ -40,32 +40,32 @@ function alltopush {
     echo ""
     echo -e "\e[32mAdded .\e[0m"
     echo ""
-    git commit -m $message
+    git commit -m "$message"
     echo ""
-    echo -e "\e[32mCommited with message \e[35m$message\e[32m\e[0m"
+    echo -e "\e[32mCommited with message \e[35m\"$message\"\e[32m\e[0m"
     echo ""
     git push
 }
 
 function run {
-    local mode="$1"
+    local mode=$1
     local branch_p=$2
     local message_p=$3
 
-    if [[ "${MODE,,}" =~ "n" ]]; then
+    if [[ "${mode,,}" =~ "n" ]]; then
 
         startup
-        checkout $mode $branch_p
+        checkout "$mode" "$branch_p"
 
         finalmessage=$( [ $? -eq 1 ] && echo "$message_p" || echo "$branch_p" )
 
         confirm
         if [ $? -eq 1 ]; then
-            alltopush $finalmessage
+            alltopush "$finalmessage"
         fi
     fi
 }
 
-run $MODE $BRANCH_P $MESSAGE_P
+run "$MODE" "$BRANCH_P" "$MESSAGE_P"
 echo -e "\e[32mDone :)\e[0m"
 exit 0
